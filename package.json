@@ -1,0 +1,18 @@
+{
+  "name": "sync-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "pull": "npm run update-env && rimraf ./content && uniform sync pull",
+    "push": "node update-env.js && uniform sync push && npm run warn",
+    "update-env": "node update-env.js",
+    "warn": "echo 'WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! \n\nData Sources and Integrations are not supported for sync via CLI, use Uniform Toolbox Chrome extension for this' > /dev/null"
+  },
+  "devDependencies": {
+    "@uniformdev/cli": "^19.170.1",
+    "dotenv": "^16.4.5",
+    "readline": "^1.3.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5"
+  }
+}
