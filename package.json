@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "content-gen": "node content-gen.js",
     "pull": "npm run warn-pull && npm run update-env && rimraf ./content && uniform sync pull",
     "push": "node update-env.js && uniform sync push && npm run warn-after",
     "update-env": "node update-env.js",
