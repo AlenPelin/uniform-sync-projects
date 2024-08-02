@@ -1,4 +1,9 @@
 .env
+.env.*
 node_modules/
 
 content/
+content-*/
+content.*/
+.vscode/
+.DS_Store
