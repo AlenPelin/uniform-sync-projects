@@ -37,6 +37,7 @@ const config: CLIConfiguration = {
     },
     directory: './content',
     format: 'yaml',
+    mode: 'create'
   },
 };
 
