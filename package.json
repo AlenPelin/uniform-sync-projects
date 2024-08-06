@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "content-gen": "node content-gen.js",
-    "pull": "npm run warn-pull && npm run update-env && rimraf ./content && uniform sync pull",
+    "pull": "npm run warn-pull && npm run update-env && rimraf ./content && uniform sync pull && npm run post-process-yaml",
     "push": "node update-env.js && uniform sync push && npm run warn-after",
+    "post-process-yaml": "node post-process-yaml.js",
     "update-env": "node update-env.js",
     "warn-pull": "echo 'WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! \n\nTHIS WILL DELETE ALL FILES IN /content/ DIR' > /dev/null",
     "warn-after": "echo 'WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! \n\nData Sources and Integrations are not supported for sync via CLI, use Uniform Toolbox Chrome extension for this' > /dev/null"
