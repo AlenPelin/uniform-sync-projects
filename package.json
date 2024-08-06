@@ -11,7 +11,7 @@
     "warn-after": "echo 'WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! \n\nData Sources and Integrations are not supported for sync via CLI, use Uniform Toolbox Chrome extension for this' > /dev/null"
   },
   "devDependencies": {
-    "@uniformdev/cli": "^19.170.1",
+    "@uniformdev/cli": "^19.176.0",
     "dotenv": "^16.4.5",
     "readline": "^1.3.0",
     "rimraf": "^6.0.1",
