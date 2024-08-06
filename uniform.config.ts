@@ -2,38 +2,55 @@ import type { CLIConfiguration } from '@uniformdev/cli';
 
 const config: CLIConfiguration = {
   serialization: {
+    directory: './content',
+    format: 'yaml',
+    
+    // 'create' is much faster if you don't need to update elements
+    mode: 'createOrUpdate',
+    
     entitiesConfig: {
+      // ======================== Uniform Deploy =========================== //
+
       // system
-      locale: {},
-      projectMapDefinition: {},
+      locale:               { },
       
-      // model
-      category: {},
-      component: {},
-      contentType: {},
-      dataType: {},
+      // models
+      category:             { },
+      component:            { },
+      contentType:          { },
+      dataType:             { },
       
       // patterns
-      compositionPattern: { publish: true },
-      entryPattern: { publish: true },
-      pattern: { publish: true },
+      compositionPattern:   { publish: true },
+      entryPattern:         { publish: true },
+      pattern:              { publish: true },
       
       // content
-      projectMapNode: {},
-      composition: { publish: true },
-      entry: { publish: true },
+      composition:          { publish: true },
+      entry:                { publish: true },
 
-      // assets may take a lot of time
+      // project map
+      projectMapDefinition: { },
+      projectMapNode:       { },
+
+      // assets (may take a lot of time, consider disabling)
       asset: {},
+
+      /* DISABLED BY DEFAULT !!! 
+      asset:                { },
+      */
       
       // optimize 
+      // ======================= Uniform Optimize ========================== //
 
-      // aggregate: {},
-      // enrichment: {},
-      // quirk: {},
-      // redirect: {},
-      // signal: {},
-      // test: {},
+      /* DISABLED BY DEFAULT !!!    
+      aggregate:            { },
+      enrichment:           { },
+      quirk:                { },
+      redirect:             { },
+      signal:               { },
+      test:                 { },
+      */
     },
     directory: './content',
     format: 'yaml',
