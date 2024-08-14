@@ -16,7 +16,7 @@ const env = (name) => new Promise((resolve) => {
         return;
     }
 
-    rl.question(`Please specify ${name}: `, (answer) => {
+    rl.question(`Please specify ${name} (current value is '${res[name]}'): `, (answer) => {
         res[name] = answer;
         resolve(answer);
     });
