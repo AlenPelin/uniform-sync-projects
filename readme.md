@@ -12,9 +12,13 @@ Do this once:
 npm i
 ```
 
+**Review `./uniform.config.ts` and include/exclude what you need (Optimize items are excluded by default)**
+
 ## How to use
 
 ### Download content from source project
+
+**Make sure there's nothing valuable in `./content` dir –– it will be cleared**
 
 Run this command:
 
@@ -29,6 +33,10 @@ Please specify UNIFORM_PROJECT_ID:
 ```
 
 Wait until it completes.
+
+**Note:** YAML files will be post-processed for ease of comparison:
+* `updated` and `created` fields will be removed
+* properties order will be changed (where it is safe to do and does not change meaning) e.g. id, name, slug, ...
 
 ### Push downloaded content to target project
 
