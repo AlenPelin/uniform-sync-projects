@@ -78,6 +78,9 @@ function removePropertiesAndSort(filePath) {
             return;
         }
 
+        console.log('Post-processing file ' + filePath);
+        const crLf = /\r\n/.test(data);
+
         try {
             // Parse the YAML content
             let content = yaml.load(data);
@@ -108,8 +111,11 @@ function removePropertiesAndSort(filePath) {
             // Convert the updated object back to YAML format
             const yamlContent = yaml.dump(sortedContent);
 
+            data = yamlContent;
+            data = crLf ? data.replace(/\r?\n/g, '\r\n') : data;
+
             // Write the modified content back to the file
-            fs.writeFile(filePath, yamlContent, 'utf8', (err) => {
+            fs.writeFile(filePath, data, 'utf8', (err) => {
                 if (err) {
                     console.error(`Error writing file ${filePath}:`, err);
                 } else {
