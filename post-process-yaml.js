@@ -86,6 +86,22 @@ function removePropertiesAndSort(filePath) {
             delete content.updated;
             delete content.created;
 
+            if (content.parameters) {
+                content.parameters.map(x => {
+                    if (x?.typeConfig === null) {
+                        delete x.typeConfig;
+                    }
+                });
+            }
+
+            if (content.fields) {
+                content.fields.map(x => {
+                    if (x?.typeConfig === null) {
+                        delete x.typeConfig;
+                    }
+                });
+            }
+
             // Sort the keys of the object recursively
             const sortedContent = sortObjectKeys(content);
 
