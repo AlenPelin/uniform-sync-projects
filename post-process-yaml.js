@@ -85,7 +85,8 @@ function removePropertiesAndSort(filePath) {
             // Parse the YAML content
             let content = yaml.load(data);
 
-            // Remove the "updated" and "created" properties if they exist
+            // Remove the "modified", "updated" and "created" properties if they exist
+            delete content.modified;
             delete content.updated;
             delete content.created;
 
