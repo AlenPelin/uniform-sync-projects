@@ -33,10 +33,8 @@ const config: CLIConfiguration = {
       projectMapDefinition: { },
       projectMapNode:       { },
 
-      // assets (may take a lot of time, consider disabling)
-      asset: {},
-
       /* DISABLED BY DEFAULT !!! 
+      // assets (may take a lot of time, consider disabling)
       asset:                { },
       */
       
