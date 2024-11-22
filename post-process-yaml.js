@@ -70,6 +70,34 @@ function sortObjectKeys(obj) {
     }, {});
 }
 
+// Function to sort object keys recursively
+function fixIntegers(obj) {
+    if (typeof obj !== 'object' || obj === null) {
+        return obj; // Return if not an object
+    }
+
+    if (Array.isArray(obj)) {
+        // If it's an array, sort each element
+        return obj.map(fixIntegers);
+    }
+
+    let keys = [...Object.keys(obj)];
+    
+    keys.forEach(k => {
+        const v = obj[k];
+        if (typeof v === 'string') {            
+            if (!isNaN(v)) {
+                const i = parseInt(v);
+                if (!isNaN(parseInt(v))) { 
+                    obj[k] = i;
+                }
+            }
+        } else {
+            fixIntegers(obj[k]);
+        }
+    });
+}
+
 // Function to remove properties and sort keys
 function removePropertiesAndSort(filePath) {
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -105,6 +133,8 @@ function removePropertiesAndSort(filePath) {
                     }
                 });
             }
+
+            fixIntegers(content);
 
             // Sort the keys of the object recursively
             const sortedContent = sortObjectKeys(content);
