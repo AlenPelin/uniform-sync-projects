@@ -127,8 +127,14 @@ function removePropertiesAndSort(filePath) {
         }
 
         try {
+            // Remove the "updated" and "created" properties if they exist
+            if (content.modified)  
                 delete content.modified;
+
+            if (content.updated)
                 delete content.updated;
+
+            if (content.created)
                 delete content.created;
 
             if (content.parameters) {
