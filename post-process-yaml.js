@@ -98,6 +98,17 @@ function fixIntegers(obj) {
     });
 }
 
+function getYamlContent(data, filePath) {  
+    try {  
+        // Parse the YAML content
+        return yaml.load(data);
+    } catch (e) {
+        console.error(`Error parsing YAML file ${filePath}:`, e);
+
+        return undefined;
+    }
+}
+
 // Function to remove properties and sort keys
 function removePropertiesAndSort(filePath) {
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -109,14 +120,16 @@ function removePropertiesAndSort(filePath) {
         console.log('Post-processing file ' + filePath);
         const crLf = /\r\n/.test(data);
 
-        try {
-            // Parse the YAML content
-            let content = yaml.load(data);
 
-            // Remove the "modified", "updated" and "created" properties if they exist
-            delete content.modified;
-            delete content.updated;
-            delete content.created;
+        const content = getYamlContent(data, filePath);
+        if (!content) {
+            return;
+        }
+
+        try {
+                delete content.modified;
+                delete content.updated;
+                delete content.created;
 
             if (content.parameters) {
                 content.parameters.map(x => {
@@ -154,7 +167,7 @@ function removePropertiesAndSort(filePath) {
                 }
             });
         } catch (e) {
-            console.error(`Error parsing YAML file ${filePath}:`, e);
+            console.error(`Failed to prost-process YAML file ${filePath}:`, e);
         }
     });
 }
