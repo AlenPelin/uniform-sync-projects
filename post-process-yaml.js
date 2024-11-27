@@ -118,7 +118,7 @@ function removePropertiesAndSort(filePath) {
         }
 
         console.log('Post-processing file ' + filePath);
-        const crLf = /\r\n/.test(data);
+        const crLf = true;
 
 
         const content = getYamlContent(data, filePath);
