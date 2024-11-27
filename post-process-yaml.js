@@ -120,6 +120,8 @@ function removePropertiesAndSort(filePath) {
         console.log('Post-processing file ' + filePath);
         const crLf = true;
 
+        // remove createdAt: '{{timestamp}}'
+        data = data.replace(/^\s*createdAt:.*$/gm, '');
 
         const content = getYamlContent(data, filePath);
         if (!content) {
