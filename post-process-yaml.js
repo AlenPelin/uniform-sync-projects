@@ -155,7 +155,8 @@ function removePropertiesAndSort(filePath) {
                 });
             }
 
-            fixIntegers(content);
+            // bug in platform prevents this
+            // fixIntegers(content);
 
             // Sort the keys of the object recursively
             const sortedContent = sortObjectKeys(content);
